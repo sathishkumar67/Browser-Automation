@@ -1,6 +1,5 @@
 from __future__ import annotations
 import mss
-import os
 from PIL import Image  
 
 def take_screenshot() -> Image.Image:
