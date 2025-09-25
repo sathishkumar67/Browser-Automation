@@ -6,7 +6,7 @@ import gradio as gr
 from PIL import Image
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from transformers.models.qwen2_vl.image_processing_qwen2_vl import smart_resize
-from .endpoint_functions import get_chat_messages
+from endpoint_functions import get_chat_messages
 
 # Model name for loading the pre-trained weights
 model_name = "Hcompany/Holo1.5-3B"  # Options: "Hcompany/Holo1.5-7B", "Hcompany/Holo1.5-72B"

@@ -1,8 +1,8 @@
 from __future__ import annotations
 import pyautogui
 from gradio_client import Client, handle_file
-from .capture import take_screenshot
-from .model_api import get_instructions
+from capture import take_screenshot
+from model_api import get_instructions
 
 client = Client("")
 
