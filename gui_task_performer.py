@@ -38,8 +38,9 @@ while True:
     if task.lower() == 'exit':
         break
     # Split the task into actionable lines if needed
-    lines = split_text(task)
-    print(lines)
+    # lines = split_text(task)
+    lines = [line.strip() for line in task.split(",")]
+	
     for i in range(len(lines)):
         # Get click coordinates from model API
         output = perform_task(lines[i])
