@@ -1,6 +1,8 @@
 from __future__ import annotations
+import os
 import mss
 from PIL import Image  
+from datetime import datetime
 
 def take_screenshot() -> Image.Image:
     """
@@ -13,13 +15,17 @@ def take_screenshot() -> Image.Image:
     Returns:
         Image.Image: Screenshot as a PIL Image object.
     """
+    # create a screenshot directory if it doesn't exist
+    if not os.path.exists("screenshots"):
+        os.makedirs("screenshots")
+
     # Create a screen capture object using mss
     with mss.mss() as sct:
         # Select the primary monitor (index 1 in mss)
         monitor = sct.monitors[1]
         # Capture the screen contents of the primary monitor
         screenshot = sct.grab(monitor)
-
-        # Convert the raw screenshot data to a PIL Image object (RGB format)
-        # Return the PIL Image object
-        return Image.frombytes("RGB", screenshot.size, screenshot.rgb)
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        path = os.path.join("screenshots", f"screenshot_{ts}.png")
+        mss.tools.to_png(screenshot.rgb, screenshot.size, output=path)
+        return path
